@@ -90,6 +90,31 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:text="More documentation at http://support.tactfactory.com/harmony/"  />
-			</LinearLayout>
+				<Button
+			android:id="@+id/user_list_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="List all User" />
+		<Button
+			android:id="@+id/usergroup_list_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="List all UserGroup" />
+		<Button
+			android:id="@+id/voteforfeit_list_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="List all VoteForfeit" />
+		<Button
+			android:id="@+id/votestick_list_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="List all VoteStick" />
+		<Button
+			android:id="@+id/stick_list_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="List all Stick" />
+	</LinearLayout>
 </ScrollView>
 

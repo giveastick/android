@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:harmony="http://schemas.android.com/apk/res/com.iia.giveastick"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+   <TextView
+    	android:id="@+id/usergroup_tag_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/usergroup_tag_label"/>
+    <EditText
+		android:id="@+id/usergroup_tag"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="text"
+		android:layout_below="@+id/usergroup_tag_label" />
+    <TextView
+    	android:id="@+id/usergroup_users_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/usergroup_tag"
+	    android:text="@string/usergroup_users_label"/>
+    <com.iia.giveastick.harmony.widget.MultiEntityWidget
+        android:id="@+id/usergroup_users_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/usergroup_users_label" />
+    <TextView
+    	android:id="@+id/usergroup_voteforfeits_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/usergroup_users_button"
+	    android:text="@string/usergroup_voteforfeits_label"/>
+    <com.iia.giveastick.harmony.widget.MultiEntityWidget
+        android:id="@+id/usergroup_voteforfeits_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/usergroup_voteforfeits_label" />
+</RelativeLayout>

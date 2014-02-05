@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+		<RelativeLayout
+			android:id="@+id/user_data_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp" >
+			<TextView
+				android:id="@+id/user_email_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/user_email_label"/>
+			<TextView
+				android:id="@+id/user_email"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/user_email_label" />
+			<TextView
+				android:id="@+id/user_password_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/user_email"
+				android:text="@string/user_password_label"/>
+			<TextView
+				android:id="@+id/user_password"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/user_password_label" />
+			<TextView
+				android:id="@+id/user_nickname_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/user_password"
+				android:text="@string/user_nickname_label"/>
+			<TextView
+				android:id="@+id/user_nickname"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/user_nickname_label" />
+			<TextView
+				android:id="@+id/user_group_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/user_nickname"
+				android:text="@string/user_group_label"/>
+			<TextView
+				android:id="@+id/user_group"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/user_group_label" />
+			<TextView
+				android:id="@+id/user_votesticks_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/user_group"
+				android:text="@string/user_votesticks_label"/>
+			<TextView
+				android:id="@+id/user_votesticks"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/user_votesticks_label" />
+			<TextView
+				android:id="@+id/user_givensticks_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/user_votesticks"
+				android:text="@string/user_givensticks_label"/>
+			<TextView
+				android:id="@+id/user_givensticks"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/user_givensticks_label" />
+			<TextView
+				android:id="@+id/user_receivedsticks_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/user_givensticks"
+				android:text="@string/user_receivedsticks_label"/>
+			<TextView
+				android:id="@+id/user_receivedsticks"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/user_receivedsticks_label" />
+		</RelativeLayout>
+	</ScrollView>
+	<TextView
+	    android:id="@+id/user_empty"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+	    android:visibility="gone"
+	    android:text="@string/user_not_found" />
+</RelativeLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<dimen name="default_gap">16dip</dimen>
+	<dimen name="list_visible_scrollbar_padding">32dip</dimen>
+</resources>

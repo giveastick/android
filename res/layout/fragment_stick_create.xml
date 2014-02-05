@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:harmony="http://schemas.android.com/apk/res/com.iia.giveastick"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TextView
+    	android:id="@+id/stick_giver_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/stick_giver_label"/>
+    <com.iia.giveastick.harmony.widget.SingleEntityWidget
+        android:id="@+id/stick_giver_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/stick_giver_label" />
+    <TextView
+    	android:id="@+id/stick_receiver_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/stick_giver_button"
+	    android:text="@string/stick_receiver_label"/>
+    <com.iia.giveastick.harmony.widget.SingleEntityWidget
+        android:id="@+id/stick_receiver_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/stick_receiver_label" />
+    <TextView
+    	android:id="@+id/stick_votesticks_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/stick_receiver_button"
+	    android:text="@string/stick_votesticks_label"/>
+    <com.iia.giveastick.harmony.widget.MultiEntityWidget
+        android:id="@+id/stick_votesticks_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/stick_votesticks_label" />
+</RelativeLayout>

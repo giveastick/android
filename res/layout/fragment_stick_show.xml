@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+		<RelativeLayout
+			android:id="@+id/stick_data_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp" >
+			<TextView
+				android:id="@+id/stick_giver_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/stick_giver_label"/>
+			<TextView
+				android:id="@+id/stick_giver"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/stick_giver_label" />
+			<TextView
+				android:id="@+id/stick_receiver_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/stick_giver"
+				android:text="@string/stick_receiver_label"/>
+			<TextView
+				android:id="@+id/stick_receiver"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/stick_receiver_label" />
+			<TextView
+				android:id="@+id/stick_votesticks_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/stick_receiver"
+				android:text="@string/stick_votesticks_label"/>
+			<TextView
+				android:id="@+id/stick_votesticks"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/stick_votesticks_label" />
+		</RelativeLayout>
+	</ScrollView>
+	<TextView
+	    android:id="@+id/stick_empty"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+	    android:visibility="gone"
+	    android:text="@string/stick_not_found" />
+</RelativeLayout>

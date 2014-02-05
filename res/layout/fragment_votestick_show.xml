@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+		<RelativeLayout
+			android:id="@+id/votestick_data_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp" >
+			<TextView
+				android:id="@+id/votestick_answer_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/votestick_answer_label"/>
+			<CheckBox
+				android:id="@+id/votestick_answer"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/votestick_answer_label" />
+			<TextView
+				android:id="@+id/votestick_user_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/votestick_answer"
+				android:text="@string/votestick_user_label"/>
+			<TextView
+				android:id="@+id/votestick_user"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/votestick_user_label" />
+			<TextView
+				android:id="@+id/votestick_stick_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/votestick_user"
+				android:text="@string/votestick_stick_label"/>
+			<TextView
+				android:id="@+id/votestick_stick"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/votestick_stick_label" />
+		</RelativeLayout>
+	</ScrollView>
+	<TextView
+	    android:id="@+id/votestick_empty"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+	    android:visibility="gone"
+	    android:text="@string/votestick_not_found" />
+</RelativeLayout>

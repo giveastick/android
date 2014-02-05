@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+		<RelativeLayout
+			android:id="@+id/usergroup_data_layout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp" >
+			<TextView
+				android:id="@+id/usergroup_tag_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/usergroup_tag_label"/>
+			<TextView
+				android:id="@+id/usergroup_tag"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/usergroup_tag_label" />
+			<TextView
+				android:id="@+id/usergroup_users_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/usergroup_tag"
+				android:text="@string/usergroup_users_label"/>
+			<TextView
+				android:id="@+id/usergroup_users"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/usergroup_users_label" />
+			<TextView
+				android:id="@+id/usergroup_voteforfeits_label"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/usergroup_users"
+				android:text="@string/usergroup_voteforfeits_label"/>
+			<TextView
+				android:id="@+id/usergroup_voteforfeits"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textIsSelectable="true"
+				android:layout_below="@+id/usergroup_voteforfeits_label" />
+		</RelativeLayout>
+	</ScrollView>
+	<TextView
+	    android:id="@+id/usergroup_empty"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+	    android:visibility="gone"
+	    android:text="@string/usergroup_not_found" />
+</RelativeLayout>

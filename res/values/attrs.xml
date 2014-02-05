@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<declare-styleable name="DateTimeWidget">
+		<attr
+			name="dateTimeWidget_timeDialogTitle"
+			format="reference|string" />
+		<attr
+			name="dateTimeWidget_format24H"
+			format="enum">
+			<enum
+				name="h24"
+				value="1" />
+			<enum
+				name="am_pm"
+				value="2" />
+			<enum
+				name="androidConfig"
+				value="3" />
+		</attr>
+		<attr
+			name="dateTimeWidget_dateDialogTitle"
+			format="reference|string" />
+	</declare-styleable>
+	<declare-styleable name="DateWidget">
+		<attr
+			name="dateWidget_dialogTitle"
+			format="reference|string" />
+	</declare-styleable>
+	<declare-styleable name="TimeWidget">
+		<attr
+			name="timeWidget_format24H"
+			format="enum">
+			<enum
+				name="h24"
+				value="1" />
+			<enum
+				name="am_pm"
+				value="2" />
+			<enum
+				name="androidConfig"
+				value="3" />
+		</attr>
+		<attr
+			name="timeWidget_dialogTitle"
+			format="reference|string" />
+	</declare-styleable>
+	<declare-styleable name="ViewGroup_MarginLayout">
+		<attr name="android:layout_marginLeft" />
+		<attr name="android:layout_margin" />
+		<attr name="android:layout_marginBottom" />
+		<attr name="android:layout_marginTop" />
+		<attr name="android:layout_marginRight" />
+	</declare-styleable>
+	<declare-styleable name="GridLayout">
+		<attr
+			name="rowOrderPreserved"
+			format="boolean" />
+		<attr
+			name="columnCount"
+			format="integer" />
+		<attr
+			name="columnOrderPreserved"
+			format="boolean" />
+		<attr
+			name="useDefaultMargins"
+			format="boolean" />
+		<attr
+			name="rowCount"
+			format="integer" />
+		<attr name="alignmentMode" />
+		<attr name="android:orientation" />
+	</declare-styleable>
+	<declare-styleable name="GridLayout_Layout">
+		<attr
+			name="layout_row"
+			format="integer" />
+		<attr
+			name="layout_rowSpan"
+			format="integer" />
+		<attr name="android:layout_gravity" />
+		<attr name="layout_column" />
+		<attr
+			name="layout_columnSpan"
+			format="integer" />
+	</declare-styleable>
+	<declare-styleable name="TableRow_Cell">
+		<attr
+			name="layout_column"
+			format="integer" />
+		<attr
+			name="layout_span"
+			format="integer" />
+	</declare-styleable>
+	<declare-styleable name="ContactListItemView">
+		<attr
+			name="list_item_height"
+			format="dimension" />
+		<attr
+			name="list_item_contacts_count_text_color"
+			format="color" />
+		<attr
+			name="list_item_header_underline_color"
+			format="color" />
+		<attr
+			name="list_item_gap_between_image_and_text"
+			format="dimension" />
+		<attr
+			name="list_item_contacts_count_text_size"
+			format="dimension" />
+		<attr
+			name="list_item_presence_icon_size"
+			format="dimension" />
+		<attr
+			name="list_item_header_height"
+			format="dimension" />
+		<attr
+			name="list_item_presence_icon_margin"
+			format="dimension" />
+		<attr
+			name="list_item_prefix_highlight_color"
+			format="color" />
+		<attr
+			name="list_item_padding_bottom"
+			format="dimension" />
+		<attr
+			name="list_item_profile_photo_size"
+			format="dimension" />
+		<attr
+			name="list_item_text_indent"
+			format="dimension" />
+		<attr
+			name="list_item_label_width_weight"
+			format="integer" />
+		<attr
+			name="list_item_padding_left"
+			format="dimension" />
+		<attr
+			name="list_item_header_text_color"
+			format="color" />
+		<attr
+			name="activated_background"
+			format="reference" />
+		<attr
+			name="list_item_call_button_padding"
+			format="dimension" />
+		<attr
+			name="list_item_divider"
+			format="reference" />
+		<attr
+			name="list_item_data_width_weight"
+			format="integer" />
+		<attr
+			name="list_item_photo_size"
+			format="dimension" />
+		<attr
+			name="list_item_header_text_size"
+			format="dimension" />
+		<attr
+			name="list_item_padding_right"
+			format="dimension" />
+		<attr
+			name="list_item_header_text_indent"
+			format="dimension" />
+		<attr
+			name="list_item_header_underline_height"
+			format="dimension" />
+		<attr
+			name="list_section_header_height"
+			format="dimension" />
+		<attr
+			name="list_item_gap_between_label_and_data"
+			format="dimension" />
+		<attr
+			name="list_item_vertical_divider_margin"
+			format="dimension" />
+		<attr
+			name="list_item_padding_top"
+			format="dimension" />
+		<attr
+			name="section_header_background"
+			format="reference" />
+	</declare-styleable>
+	<attr name="alignmentMode">
+		<enum
+			name="alignMargins"
+			value="1" />
+		<enum
+			name="alignBounds"
+			value="0" />
+	</attr>
+</resources>

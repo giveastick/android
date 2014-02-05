@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:harmony="http://schemas.android.com/apk/res/com.iia.giveastick"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TextView
+    	android:id="@+id/voteforfeit_usergroup_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/voteforfeit_usergroup_label"/>
+    <com.iia.giveastick.harmony.widget.SingleEntityWidget
+        android:id="@+id/voteforfeit_usergroup_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/voteforfeit_usergroup_label" />
+</RelativeLayout>

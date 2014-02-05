@@ -11,6 +11,11 @@
 package com.iia.giveastick;
 
 import com.iia.giveastick.harmony.view.HarmonyFragmentActivity;
+import com.iia.giveastick.view.user.UserListActivity;
+import com.iia.giveastick.view.usergroup.UserGroupListActivity;
+import com.iia.giveastick.view.voteforfeit.VoteForfeitListActivity;
+import com.iia.giveastick.view.votestick.VoteStickListActivity;
+import com.iia.giveastick.view.stick.StickListActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,12 +43,47 @@ public class HomeActivity extends HarmonyFragmentActivity
 	 * Initialize the buttons click listeners.
 	 */
 	private void initButtons() {
+		this.findViewById(R.id.user_list_button)
+						.setOnClickListener(this);
+		this.findViewById(R.id.usergroup_list_button)
+						.setOnClickListener(this);
+		this.findViewById(R.id.voteforfeit_list_button)
+						.setOnClickListener(this);
+		this.findViewById(R.id.votestick_list_button)
+						.setOnClickListener(this);
+		this.findViewById(R.id.stick_list_button)
+						.setOnClickListener(this);
 	}
 	
 	@Override
 	public void onClick(View v) {
 		Intent intent;
 		switch (v.getId()) {
+			case R.id.user_list_button:
+				intent = new Intent(this,
+						UserListActivity.class);
+				break;
+
+			case R.id.usergroup_list_button:
+				intent = new Intent(this,
+						UserGroupListActivity.class);
+				break;
+
+			case R.id.voteforfeit_list_button:
+				intent = new Intent(this,
+						VoteForfeitListActivity.class);
+				break;
+
+			case R.id.votestick_list_button:
+				intent = new Intent(this,
+						VoteStickListActivity.class);
+				break;
+
+			case R.id.stick_list_button:
+				intent = new Intent(this,
+						StickListActivity.class);
+				break;
+
 			default:
 				intent = null;
 				break;

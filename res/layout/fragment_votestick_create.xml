@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:harmony="http://schemas.android.com/apk/res/com.iia.giveastick"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TextView
+    	android:id="@+id/votestick_answer_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/votestick_answer_label"/>
+    <CheckBox
+	    android:id="@+id/votestick_answer"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/votestick_answer_label" />
+    <TextView
+    	android:id="@+id/votestick_user_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/votestick_answer"
+	    android:text="@string/votestick_user_label"/>
+    <com.iia.giveastick.harmony.widget.SingleEntityWidget
+        android:id="@+id/votestick_user_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/votestick_user_label" />
+    <TextView
+    	android:id="@+id/votestick_stick_label"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/votestick_user_button"
+	    android:text="@string/votestick_stick_label"/>
+    <com.iia.giveastick.harmony.widget.SingleEntityWidget
+        android:id="@+id/votestick_stick_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/votestick_stick_label" />
+</RelativeLayout>
