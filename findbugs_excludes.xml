@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="~.*\.R\$.*"/>
+  </Match>
+  <Match>
+    <Or>
+    <Package name="~com[.]iia[.]giveastick[.]criterias[.]base([.].*)?" />
+    <Package name="~com[.]iia[.]giveastick[.]data[.]base([.].*)?" />
+    <Package name="~com[.]iia[.]giveastick[.]harmony([.].*)?" />
+    <Package name="~com[.]iia[.]giveastick[.]provider[.]base([.].*)?" />
+    <Package name="~com[.]iia[.]giveastick[.]provider[.]utils[.]base([.].*)?" />
+    <Class name="~com[.]iia[.]giveastick[.]GiveastickApplicationBase.java"/>
+    </Or>
+  </Match>
+</FindBugsFilter>
