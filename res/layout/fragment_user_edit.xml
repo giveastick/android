@@ -41,21 +41,21 @@
 	    android:inputType="text"
 		android:layout_below="@+id/user_nickname_label" />
     <TextView
-    	android:id="@+id/user_group_label"
+    	android:id="@+id/user_usergroup_label"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_below="@+id/user_nickname"
-	    android:text="@string/user_group_label"/>
+	    android:text="@string/user_usergroup_label"/>
     <com.iia.giveastick.harmony.widget.SingleEntityWidget
-        android:id="@+id/user_group_button"
+        android:id="@+id/user_usergroup_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-	    android:layout_below="@+id/user_group_label" />
+	    android:layout_below="@+id/user_usergroup_label" />
     <TextView
     	android:id="@+id/user_votesticks_label"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/user_group_button"
+	    android:layout_below="@+id/user_usergroup_button"
 	    android:text="@string/user_votesticks_label"/>
     <com.iia.giveastick.harmony.widget.MultiEntityWidget
         android:id="@+id/user_votesticks_button"

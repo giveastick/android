@@ -53,10 +53,10 @@ public class User implements Serializable , Parcelable {
 	@OneToMany
 	private ArrayList<VoteStick> voteSticks;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "giver")
 	private ArrayList<Stick> givenSticks;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "receiver")
 	private ArrayList<Stick> receivedSticks;
 
 

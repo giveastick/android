@@ -23,7 +23,7 @@
 	    	android:layout_height="wrap_content"
 			android:layout_below="@+id/row_user_password" />
 	    <TextView
-			android:id="@+id/row_user_group"
+			android:id="@+id/row_user_usergroup"
 	    	android:layout_width="match_parent"
 	    	android:layout_height="wrap_content"
 			android:layout_below="@+id/row_user_nickname" />

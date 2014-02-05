@@ -125,7 +125,7 @@ public abstract class UserProviderUtilsBase
 			operations.add(ContentProviderOperation.newUpdate(StickProviderAdapter.STICK_URI)
 					.withValueBackReference(
 							GiveastickContract.Stick
-									.COL_USERGIVENSTICKSINTERNAL,
+									.COL_GIVER,
 							0)
 					.withSelection(givenSticksSelection, givenSticksSelectionArgs)
 					.build());
@@ -145,7 +145,7 @@ public abstract class UserProviderUtilsBase
 			operations.add(ContentProviderOperation.newUpdate(StickProviderAdapter.STICK_URI)
 					.withValueBackReference(
 							GiveastickContract.Stick
-									.COL_USERRECEIVEDSTICKSINTERNAL,
+									.COL_RECEIVER,
 							0)
 					.withSelection(receivedSticksSelection, receivedSticksSelectionArgs)
 					.build());
@@ -236,7 +236,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValueBackReference(
 								GiveastickContract.Stick
-										.COL_USERGIVENSTICKSINTERNAL,
+										.COL_GIVER,
 								0)
 					.withSelection(
 							userCrit.toSQLiteSelection(),
@@ -263,7 +263,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValueBackReference(
 								GiveastickContract.Stick
-										.COL_USERRECEIVEDSTICKSINTERNAL,
+										.COL_RECEIVER,
 								0)
 					.withSelection(
 							userCrit.toSQLiteSelection(),
@@ -485,7 +485,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValue(
 								GiveastickContract.Stick
-										.COL_USERGIVENSTICKSINTERNAL,
+										.COL_GIVER,
 								item.getId())
 					.withSelection(
 							givenSticksCrit.toSQLiteSelection(),
@@ -494,7 +494,7 @@ public abstract class UserProviderUtilsBase
 
 			// Remove old associated givenSticks
 			crit.setType(Type.NOT_IN);
-			givenSticksCrit.add(GiveastickContract.Stick.COL_USERGIVENSTICKSINTERNAL,
+			givenSticksCrit.add(GiveastickContract.Stick.COL_GIVER,
 					String.valueOf(item.getId()),
 					Type.EQUALS);
 			
@@ -503,7 +503,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValue(
 								GiveastickContract.Stick
-										.COL_USERGIVENSTICKSINTERNAL,
+										.COL_GIVER,
 								null)
 					.withSelection(
 							givenSticksCrit.toSQLiteSelection(),
@@ -532,7 +532,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValue(
 								GiveastickContract.Stick
-										.COL_USERRECEIVEDSTICKSINTERNAL,
+										.COL_RECEIVER,
 								item.getId())
 					.withSelection(
 							receivedSticksCrit.toSQLiteSelection(),
@@ -541,7 +541,7 @@ public abstract class UserProviderUtilsBase
 
 			// Remove old associated receivedSticks
 			crit.setType(Type.NOT_IN);
-			receivedSticksCrit.add(GiveastickContract.Stick.COL_USERRECEIVEDSTICKSINTERNAL,
+			receivedSticksCrit.add(GiveastickContract.Stick.COL_RECEIVER,
 					String.valueOf(item.getId()),
 					Type.EQUALS);
 			
@@ -550,7 +550,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValue(
 								GiveastickContract.Stick
-										.COL_USERRECEIVEDSTICKSINTERNAL,
+										.COL_RECEIVER,
 								null)
 					.withSelection(
 							receivedSticksCrit.toSQLiteSelection(),
@@ -665,7 +665,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValue(
 								GiveastickContract.Stick
-										.COL_USERGIVENSTICKSINTERNAL,
+										.COL_GIVER,
 								item.getId())
 					.withSelection(
 							givenSticksCrit.toSQLiteSelection(),
@@ -674,7 +674,7 @@ public abstract class UserProviderUtilsBase
 
 			// Remove old associated givenSticks
 			crit.setType(Type.NOT_IN);
-			givenSticksCrit.add(GiveastickContract.Stick.COL_USERGIVENSTICKSINTERNAL,
+			givenSticksCrit.add(GiveastickContract.Stick.COL_GIVER,
 					String.valueOf(item.getId()),
 					Type.EQUALS);
 			
@@ -683,7 +683,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValue(
 								GiveastickContract.Stick
-										.COL_USERGIVENSTICKSINTERNAL,
+										.COL_GIVER,
 								null)
 					.withSelection(
 							givenSticksCrit.toSQLiteSelection(),
@@ -712,7 +712,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValue(
 								GiveastickContract.Stick
-										.COL_USERRECEIVEDSTICKSINTERNAL,
+										.COL_RECEIVER,
 								item.getId())
 					.withSelection(
 							receivedSticksCrit.toSQLiteSelection(),
@@ -721,7 +721,7 @@ public abstract class UserProviderUtilsBase
 
 			// Remove old associated receivedSticks
 			crit.setType(Type.NOT_IN);
-			receivedSticksCrit.add(GiveastickContract.Stick.COL_USERRECEIVEDSTICKSINTERNAL,
+			receivedSticksCrit.add(GiveastickContract.Stick.COL_RECEIVER,
 					String.valueOf(item.getId()),
 					Type.EQUALS);
 			
@@ -730,7 +730,7 @@ public abstract class UserProviderUtilsBase
 					StickProviderAdapter.STICK_URI)
 						.withValue(
 								GiveastickContract.Stick
-										.COL_USERRECEIVEDSTICKSINTERNAL,
+										.COL_RECEIVER,
 								null)
 					.withSelection(
 							receivedSticksCrit.toSQLiteSelection(),
@@ -815,7 +815,7 @@ public abstract class UserProviderUtilsBase
 		Cursor stickCursor = prov.query(
 				StickProviderAdapter.STICK_URI,
 				GiveastickContract.Stick.ALIASED_COLS,
-				GiveastickContract.Stick.COL_USERGIVENSTICKSINTERNAL
+				GiveastickContract.Stick.COL_GIVER
 						+ "= ?",
 				new String[]{String.valueOf(item.getId())},
 				null);
@@ -839,7 +839,7 @@ public abstract class UserProviderUtilsBase
 		Cursor stickCursor = prov.query(
 				StickProviderAdapter.STICK_URI,
 				GiveastickContract.Stick.ALIASED_COLS,
-				GiveastickContract.Stick.COL_USERRECEIVEDSTICKSINTERNAL
+				GiveastickContract.Stick.COL_RECEIVER
 						+ "= ?",
 				new String[]{String.valueOf(item.getId())},
 				null);

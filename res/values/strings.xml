@@ -39,9 +39,9 @@
 	<string name="stick_votesticks_dialog_title">Select voteSticks</string>
 	<string name="stick_votesticks_invalid_field_error">Field VoteSticks is invalid.</string>
 	<string name="stick_votesticks_label">VoteSticks</string>
+	<string name="uri_not_supported">URI not supported</string>
 	<string name="user_email_invalid_field_error">Field Email is invalid.</string>
 	<string name="user_email_label">Email</string>
-	<string name="uri_not_supported">URI not supported</string>
 	<string name="user_empty_list">User list is empty !</string>
 	<string name="user_error_create">User creation error‚Ä¶</string>
 	<string name="user_error_edit">User edition error‚Ä¶</string>

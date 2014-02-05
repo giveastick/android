@@ -174,13 +174,13 @@ public abstract class UserSQLiteAdapterBase
 				new StickSQLiteAdapter(this.ctx);
 		givenSticksAdapter.open(this.mDatabase);
 		Cursor givensticksCursor = givenSticksAdapter
-					.getByUsergivenSticksInternal(result.getId(), GiveastickContract.Stick.ALIASED_COLS, null, null, null);
+					.getByGiver(result.getId(), GiveastickContract.Stick.ALIASED_COLS, null, null, null);
 		result.setGivenSticks(givenSticksAdapter.cursorToItems(givensticksCursor));
 		final StickSQLiteAdapter receivedSticksAdapter =
 				new StickSQLiteAdapter(this.ctx);
 		receivedSticksAdapter.open(this.mDatabase);
 		Cursor receivedsticksCursor = receivedSticksAdapter
-					.getByUserreceivedSticksInternal(result.getId(), GiveastickContract.Stick.ALIASED_COLS, null, null, null);
+					.getByReceiver(result.getId(), GiveastickContract.Stick.ALIASED_COLS, null, null, null);
 		result.setReceivedSticks(receivedSticksAdapter.cursorToItems(receivedsticksCursor));
 		return result;
 	}
@@ -295,9 +295,8 @@ public abstract class UserSQLiteAdapterBase
 			givenSticksAdapter.open(this.mDatabase);
 			for (Stick stick
 						: item.getGivenSticks()) {
-				givenSticksAdapter.insertOrUpdateWithUserGivenSticks(
-									stick,
-									newid);
+				stick.setGiver(item);
+				givenSticksAdapter.insertOrUpdate(stick);
 			}
 		}
 		if (item.getReceivedSticks() != null) {
@@ -306,9 +305,8 @@ public abstract class UserSQLiteAdapterBase
 			receivedSticksAdapter.open(this.mDatabase);
 			for (Stick stick
 						: item.getReceivedSticks()) {
-				receivedSticksAdapter.insertOrUpdateWithUserReceivedSticks(
-									stick,
-									newid);
+				stick.setReceiver(item);
+				receivedSticksAdapter.insertOrUpdate(stick);
 			}
 		}
 		return newid;
@@ -454,8 +452,9 @@ public abstract class UserSQLiteAdapterBase
 		givenSticksAdapter.open(this.mDatabase);
 		if (item.getGivenSticks() != null) {
 			for (Stick stick : item.getGivenSticks()) {
-				givenSticksAdapter.updateWithUserGivenSticks(
-						stick, newid);
+				stick.setGiver(item);
+				givenSticksAdapter.update(
+						stick);
 			}
 		}
 		StickSQLiteAdapter receivedSticksAdapter =
@@ -463,8 +462,9 @@ public abstract class UserSQLiteAdapterBase
 		receivedSticksAdapter.open(this.mDatabase);
 		if (item.getReceivedSticks() != null) {
 			for (Stick stick : item.getReceivedSticks()) {
-				receivedSticksAdapter.updateWithUserReceivedSticks(
-						stick, newid);
+				stick.setReceiver(item);
+				receivedSticksAdapter.update(
+						stick);
 			}
 		}
 

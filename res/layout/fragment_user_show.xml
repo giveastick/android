@@ -48,22 +48,22 @@
 				android:textIsSelectable="true"
 				android:layout_below="@+id/user_nickname_label" />
 			<TextView
-				android:id="@+id/user_group_label"
+				android:id="@+id/user_usergroup_label"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_below="@+id/user_nickname"
-				android:text="@string/user_group_label"/>
+				android:text="@string/user_usergroup_label"/>
 			<TextView
-				android:id="@+id/user_group"
+				android:id="@+id/user_usergroup"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textIsSelectable="true"
-				android:layout_below="@+id/user_group_label" />
+				android:layout_below="@+id/user_usergroup_label" />
 			<TextView
 				android:id="@+id/user_votesticks_label"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_below="@+id/user_group"
+				android:layout_below="@+id/user_usergroup"
 				android:text="@string/user_votesticks_label"/>
 			<TextView
 				android:id="@+id/user_votesticks"

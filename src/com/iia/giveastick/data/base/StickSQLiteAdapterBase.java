@@ -86,20 +86,12 @@ public abstract class StickSQLiteAdapterBase
 		 + GiveastickContract.Stick.COL_PULLEDOFF	+ " DATE NOT NULL,"
 		 + GiveastickContract.Stick.COL_GIVER	+ " INTEGER NOT NULL,"
 		 + GiveastickContract.Stick.COL_RECEIVER	+ " INTEGER NOT NULL,"
-		 + GiveastickContract.Stick.COL_USERGIVENSTICKSINTERNAL	+ " INTEGER,"
-		 + GiveastickContract.Stick.COL_USERRECEIVEDSTICKSINTERNAL	+ " INTEGER,"
 		
 		
 		 + "FOREIGN KEY(" + GiveastickContract.Stick.COL_GIVER + ") REFERENCES " 
 			 + GiveastickContract.User.TABLE_NAME 
 				+ " (" + GiveastickContract.User.COL_ID + "),"
 		 + "FOREIGN KEY(" + GiveastickContract.Stick.COL_RECEIVER + ") REFERENCES " 
-			 + GiveastickContract.User.TABLE_NAME 
-				+ " (" + GiveastickContract.User.COL_ID + "),"
-		 + "FOREIGN KEY(" + GiveastickContract.Stick.COL_USERGIVENSTICKSINTERNAL + ") REFERENCES " 
-			 + GiveastickContract.User.TABLE_NAME 
-				+ " (" + GiveastickContract.User.COL_ID + "),"
-		 + "FOREIGN KEY(" + GiveastickContract.Stick.COL_USERRECEIVEDSTICKSINTERNAL + ") REFERENCES " 
 			 + GiveastickContract.User.TABLE_NAME 
 				+ " (" + GiveastickContract.User.COL_ID + ")"
 		+ ");"
@@ -235,58 +227,6 @@ public abstract class StickSQLiteAdapterBase
 
 		return cursor;
 	 }
-	/**
-	 * Find & read Stick by UsergivenSticksInternal.
-	 * @param usergivensticksinternalId usergivensticksinternalId
-	 * @param orderBy Order by string (can be null)
-	 * @return List of Stick entities
-	 */
-	 public Cursor getByUsergivenSticksInternal(final int usergivensticksinternalId, String[] projection, String selection, String[] selectionArgs, String orderBy) {
-		String idSelection = GiveastickContract.Stick.COL_USERGIVENSTICKSINTERNAL + "=?";
-		String idSelectionArgs = String.valueOf(usergivensticksinternalId);
-		if (!Strings.isNullOrEmpty(selection)) {
-			selection += " AND " + idSelection;
-			selectionArgs = ObjectArrays.concat(selectionArgs, idSelectionArgs);
-		} else {
-			selection = idSelection;
-			selectionArgs = new String[]{idSelectionArgs};
-		}
-		final Cursor cursor = this.query(
-				projection,
-				selection,
-				selectionArgs,
-				null,
-				null,
-				orderBy);
-
-		return cursor;
-	 }
-	/**
-	 * Find & read Stick by UserreceivedSticksInternal.
-	 * @param userreceivedsticksinternalId userreceivedsticksinternalId
-	 * @param orderBy Order by string (can be null)
-	 * @return List of Stick entities
-	 */
-	 public Cursor getByUserreceivedSticksInternal(final int userreceivedsticksinternalId, String[] projection, String selection, String[] selectionArgs, String orderBy) {
-		String idSelection = GiveastickContract.Stick.COL_USERRECEIVEDSTICKSINTERNAL + "=?";
-		String idSelectionArgs = String.valueOf(userreceivedsticksinternalId);
-		if (!Strings.isNullOrEmpty(selection)) {
-			selection += " AND " + idSelection;
-			selectionArgs = ObjectArrays.concat(selectionArgs, idSelectionArgs);
-		} else {
-			selection = idSelection;
-			selectionArgs = new String[]{idSelectionArgs};
-		}
-		final Cursor cursor = this.query(
-				projection,
-				selection,
-				selectionArgs,
-				null,
-				null,
-				orderBy);
-
-		return cursor;
-	 }
 
 	/**
 	 * Read All Sticks entities.
@@ -315,7 +255,7 @@ public abstract class StickSQLiteAdapterBase
 		}
 
 		final ContentValues values =
-				GiveastickContract.Stick.itemToContentValues(item, 0, 0);
+				GiveastickContract.Stick.itemToContentValues(item);
 		values.remove(GiveastickContract.Stick.COL_ID);
 		int newid;
 		if (values.size() != 0) {
@@ -377,7 +317,7 @@ public abstract class StickSQLiteAdapterBase
 		}
 
 		final ContentValues values =
-				GiveastickContract.Stick.itemToContentValues(item, 0, 0);
+				GiveastickContract.Stick.itemToContentValues(item);
 		final String whereClause =
 				 GiveastickContract.Stick.COL_ID
 				 + "=? ";
@@ -388,190 +328,6 @@ public abstract class StickSQLiteAdapterBase
 				values,
 				whereClause,
 				whereArgs);
-	}
-
-
-	/**
-	 * Update a Stick entity into database.
-	 *
-	 * @param item The Stick entity to persist
-	 * @param userId The user id
-	 * @return count of updated entities
-	 */
-	public int updateWithUserGivenSticks(
-					Stick item, int userId) {
-		if (GiveastickApplication.DEBUG) {
-			Log.d(TAG, "Update DB(" + GiveastickContract.Stick.TABLE_NAME + ")");
-		}
-
-		ContentValues values =
-				GiveastickContract.Stick.itemToContentValues(item,
-							userId, 0);
-		String whereClause =
-				 GiveastickContract.Stick.COL_ID
-				 + "=? ";
-		String[] whereArgs =
-				new String[] {String.valueOf(item.getId()) };
-
-		return this.update(
-				values,
-				whereClause,
-				whereArgs);
-	}
-
-
-	/**
-	 * Either insert or update a Stick entity into database whether.
-	 * it already exists or not.
-	 *
-	 * @param item The Stick entity to persist
-	 * @param userId The user id
-	 * @return 1 if everything went well, 0 otherwise
-	 */
-	public int insertOrUpdateWithUserGivenSticks(
-			Stick item, int userId) {
-		int result = 0;
-		if (this.getByID(item.getId()) != null) {
-			// Item already exists => update it
-			result = this.updateWithUserGivenSticks(item,
-					userId);
-		} else {
-			// Item doesn't exist => create it
-			long id = this.insertWithUserGivenSticks(item,
-					userId);
-			if (id != 0) {
-				result = 1;
-			}
-		}
-
-		return result;
-	}
-
-
-	/**
-	 * Insert a Stick entity into database.
-	 *
-	 * @param item The Stick entity to persist
-	 * @param userId The user id
-	 * @return Id of the Stick entity
-	 */
-	public long insertWithUserGivenSticks(
-			Stick item, int userId) {
-		if (GiveastickApplication.DEBUG) {
-			Log.d(TAG, "Insert DB(" + GiveastickContract.Stick.TABLE_NAME + ")");
-		}
-
-		ContentValues values = GiveastickContract.Stick.itemToContentValues(item,
-				userId,
-				0);
-		values.remove(GiveastickContract.Stick.COL_ID);
-		int newid = (int) this.insert(
-			null,
-			values);
-
-		VoteStickSQLiteAdapter voteSticksAdapter =
-				new VoteStickSQLiteAdapter(this.ctx);
-		voteSticksAdapter.open(this.mDatabase);
-		if (item.getVoteSticks() != null) {
-			for (VoteStick votestick : item.getVoteSticks()) {
-				voteSticksAdapter.updateWithStickVoteSticks(
-						votestick, newid);
-			}
-		}
-
-		return newid;
-	}
-
-
-	/**
-	 * Update a Stick entity into database.
-	 *
-	 * @param item The Stick entity to persist
-	 * @param userId The user id
-	 * @return count of updated entities
-	 */
-	public int updateWithUserReceivedSticks(
-					Stick item, int userId) {
-		if (GiveastickApplication.DEBUG) {
-			Log.d(TAG, "Update DB(" + GiveastickContract.Stick.TABLE_NAME + ")");
-		}
-
-		ContentValues values =
-				GiveastickContract.Stick.itemToContentValues(item, 0,
-							userId);
-		String whereClause =
-				 GiveastickContract.Stick.COL_ID
-				 + "=? ";
-		String[] whereArgs =
-				new String[] {String.valueOf(item.getId()) };
-
-		return this.update(
-				values,
-				whereClause,
-				whereArgs);
-	}
-
-
-	/**
-	 * Either insert or update a Stick entity into database whether.
-	 * it already exists or not.
-	 *
-	 * @param item The Stick entity to persist
-	 * @param userId The user id
-	 * @return 1 if everything went well, 0 otherwise
-	 */
-	public int insertOrUpdateWithUserReceivedSticks(
-			Stick item, int userId) {
-		int result = 0;
-		if (this.getByID(item.getId()) != null) {
-			// Item already exists => update it
-			result = this.updateWithUserReceivedSticks(item,
-					userId);
-		} else {
-			// Item doesn't exist => create it
-			long id = this.insertWithUserReceivedSticks(item,
-					userId);
-			if (id != 0) {
-				result = 1;
-			}
-		}
-
-		return result;
-	}
-
-
-	/**
-	 * Insert a Stick entity into database.
-	 *
-	 * @param item The Stick entity to persist
-	 * @param userId The user id
-	 * @return Id of the Stick entity
-	 */
-	public long insertWithUserReceivedSticks(
-			Stick item, int userId) {
-		if (GiveastickApplication.DEBUG) {
-			Log.d(TAG, "Insert DB(" + GiveastickContract.Stick.TABLE_NAME + ")");
-		}
-
-		ContentValues values = GiveastickContract.Stick.itemToContentValues(item,
-				0,
-				userId);
-		values.remove(GiveastickContract.Stick.COL_ID);
-		int newid = (int) this.insert(
-			null,
-			values);
-
-		VoteStickSQLiteAdapter voteSticksAdapter =
-				new VoteStickSQLiteAdapter(this.ctx);
-		voteSticksAdapter.open(this.mDatabase);
-		if (item.getVoteSticks() != null) {
-			for (VoteStick votestick : item.getVoteSticks()) {
-				voteSticksAdapter.updateWithStickVoteSticks(
-						votestick, newid);
-			}
-		}
-
-		return newid;
 	}
 
 

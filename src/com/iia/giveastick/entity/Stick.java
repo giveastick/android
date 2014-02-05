@@ -38,12 +38,10 @@ public class Stick  implements Serializable , Parcelable {
 	@Column(type = Type.DATE, locale = true, hidden=true)
 	private DateTime pulledoff;
 	
-	@Column(name = "giver_id")
-	@ManyToOne
+	@ManyToOne(inversedBy = "givenSticks")
 	private User giver;
 	
-	@Column(name = "receiver_id")
-	@ManyToOne
+	@ManyToOne(inversedBy = "receivedSticks")
 	private User receiver;
 	
 	@OneToMany

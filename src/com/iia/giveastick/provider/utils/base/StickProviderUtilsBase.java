@@ -122,73 +122,6 @@ public abstract class StickProviderUtilsBase
 		return result;
 	}
 
-	/**
-	 * Insert into DB.
-	 * @param item Stick to insert
-	 * @param usergivenSticksInternalId usergivenSticksInternal Id* @param userreceivedSticksInternalId userreceivedSticksInternal Id
-	 * @return number of rows affected
-	 */
-	public Uri insert(final Stick item,
-							 final int usergivenSticksInternalId,
-							 final int userreceivedSticksInternalId) {
-		Uri result = null;
-		ArrayList<ContentProviderOperation> operations =
-				new ArrayList<ContentProviderOperation>();
-		ContentResolver prov = this.getContext().getContentResolver();
-
-		ContentValues itemValues = GiveastickContract.Stick.itemToContentValues(item,
-					usergivenSticksInternalId,
-					userreceivedSticksInternalId);
-		itemValues.remove(GiveastickContract.Stick.COL_ID);
-
-		operations.add(ContentProviderOperation.newInsert(
-				StickProviderAdapter.STICK_URI)
-			    	.withValues(itemValues)
-			    	.build());
-
-
-		if (item.getVoteSticks() != null && item.getVoteSticks().size() > 0) {
-			StickCriterias stickCrit =
-						new StickCriterias(GroupType.AND);
-			Criteria crit = new Criteria();
-			ArrayValue values = new ArrayValue();
-			crit.setType(Type.IN);
-			crit.setKey(GiveastickContract.VoteStick.COL_ID);
-			crit.addValue(values);
-			stickCrit.add(crit);
-
-
-			for (int i = 0; i < item.getVoteSticks().size(); i++) {
-				values.addValue(String.valueOf(
-						item.getVoteSticks().get(i).getId()));
-			}
-
-			operations.add(ContentProviderOperation.newUpdate(
-					VoteStickProviderAdapter.VOTESTICK_URI)
-						.withValueBackReference(
-								GiveastickContract.VoteStick
-										.COL_STICKVOTESTICKSINTERNAL,
-								0)
-					.withSelection(
-							stickCrit.toSQLiteSelection(),
-							stickCrit.toSQLiteSelectionArgs())
-					.build());
-		}
-
-		try {
-			ContentProviderResult[] results =
-				prov.applyBatch(GiveastickProvider.authority, operations);
-			if (results[0] != null) {
-				result = results[0].uri;
-			}
-		} catch (RemoteException e) {
-			Log.e(TAG, e.getMessage());
-		} catch (OperationApplicationException e) {
-			Log.e(TAG, e.getMessage());
-		}
-
-		return result;
-	}
 
 	/**
 	 * Delete from DB.
@@ -303,6 +236,7 @@ public abstract class StickProviderUtilsBase
 	/**
 	 * Updates the DB.
 	 * @param item Stick
+	 
 	 * @return number of rows updated
 	 */
 	public int update(final Stick item) {
@@ -310,94 +244,8 @@ public abstract class StickProviderUtilsBase
 		ArrayList<ContentProviderOperation> operations =
 				new ArrayList<ContentProviderOperation>();
 		ContentResolver prov = this.getContext().getContentResolver();
-		ContentValues itemValues = GiveastickContract.Stick.itemToContentValues(item);
-
-		Uri uri = Uri.withAppendedPath(
-				StickProviderAdapter.STICK_URI,
-				String.valueOf(item.getId()));
-
-
-		operations.add(ContentProviderOperation.newUpdate(uri)
-				.withValues(itemValues)
-				.build());
-
-		if (item.getVoteSticks() != null && item.getVoteSticks().size() > 0) {
-			// Set new voteSticks for Stick
-			VoteStickCriterias voteSticksCrit =
-						new VoteStickCriterias(GroupType.AND);
-			Criteria crit = new Criteria();
-			ArrayValue values = new ArrayValue();
-			crit.setType(Type.IN);
-			crit.setKey(GiveastickContract.VoteStick.COL_ID);
-			crit.addValue(values);
-			voteSticksCrit.add(crit);
-
-
-			for (int i = 0; i < item.getVoteSticks().size(); i++) {
-				values.addValue(String.valueOf(
-						item.getVoteSticks().get(i).getId()));
-			}
-
-			operations.add(ContentProviderOperation.newUpdate(
-					VoteStickProviderAdapter.VOTESTICK_URI)
-						.withValue(
-								GiveastickContract.VoteStick
-										.COL_STICKVOTESTICKSINTERNAL,
-								item.getId())
-					.withSelection(
-							voteSticksCrit.toSQLiteSelection(),
-							voteSticksCrit.toSQLiteSelectionArgs())
-					.build());
-
-			// Remove old associated voteSticks
-			crit.setType(Type.NOT_IN);
-			voteSticksCrit.add(GiveastickContract.VoteStick.COL_STICKVOTESTICKSINTERNAL,
-					String.valueOf(item.getId()),
-					Type.EQUALS);
-			
-
-			operations.add(ContentProviderOperation.newUpdate(
-					VoteStickProviderAdapter.VOTESTICK_URI)
-						.withValue(
-								GiveastickContract.VoteStick
-										.COL_STICKVOTESTICKSINTERNAL,
-								null)
-					.withSelection(
-							voteSticksCrit.toSQLiteSelection(),
-							voteSticksCrit.toSQLiteSelectionArgs())
-					.build());
-		}
-
-
-		try {
-			ContentProviderResult[] results = prov.applyBatch(GiveastickProvider.authority, operations);
-			result = results[0].count;
-		} catch (RemoteException e) {
-			Log.e(TAG, e.getMessage());
-		} catch (OperationApplicationException e) {
-			Log.e(TAG, e.getMessage());
-		}
-
-		return result;
-	}
-
-	/**
-	 * Updates the DB.
-	 * @param item Stick
-	 * @param usergivenSticksInternalId usergivenSticksInternal Id* @param userreceivedSticksInternalId userreceivedSticksInternal Id
-	 * @return number of rows updated
-	 */
-	public int update(final Stick item,
-							 final int usergivenSticksInternalId,
-							 final int userreceivedSticksInternalId) {
-		int result = -1;
-		ArrayList<ContentProviderOperation> operations =
-				new ArrayList<ContentProviderOperation>();
-		ContentResolver prov = this.getContext().getContentResolver();
 		ContentValues itemValues = GiveastickContract.Stick.itemToContentValues(
-				item,
-				usergivenSticksInternalId,
-				userreceivedSticksInternalId);
+				item);
 
 		Uri uri = Uri.withAppendedPath(
 				StickProviderAdapter.STICK_URI,

@@ -271,14 +271,14 @@ public abstract class UserProviderAdapterBase
 				id = Integer.parseInt(uri.getPathSegments().get(1));
 				StickSQLiteAdapter givenSticksAdapter = new StickSQLiteAdapter(this.ctx);
 				givenSticksAdapter.open(this.getDb());
-				result = givenSticksAdapter.getByUsergivenSticksInternal(id, GiveastickContract.Stick.ALIASED_COLS, selection, selectionArgs, null);
+				result = givenSticksAdapter.getByGiver(id, GiveastickContract.Stick.ALIASED_COLS, selection, selectionArgs, null);
 				break;
 
 			case USER_RECEIVEDSTICKS:
 				id = Integer.parseInt(uri.getPathSegments().get(1));
 				StickSQLiteAdapter receivedSticksAdapter = new StickSQLiteAdapter(this.ctx);
 				receivedSticksAdapter.open(this.getDb());
-				result = receivedSticksAdapter.getByUserreceivedSticksInternal(id, GiveastickContract.Stick.ALIASED_COLS, selection, selectionArgs, null);
+				result = receivedSticksAdapter.getByReceiver(id, GiveastickContract.Stick.ALIASED_COLS, selection, selectionArgs, null);
 				break;
 
 			default:

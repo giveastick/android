@@ -775,30 +775,18 @@ public abstract class GiveastickContractBase {
 		/** Alias. */
 		public static final String ALIASED_COL_PULLEDOFF =
 				GiveastickContract.Stick.TABLE_NAME + "." + COL_PULLEDOFF;
-		/** giver_id. */
+		/** giver. */
 		public static final String COL_GIVER =
-				"giver_id";
+				"giver";
 		/** Alias. */
 		public static final String ALIASED_COL_GIVER =
 				GiveastickContract.Stick.TABLE_NAME + "." + COL_GIVER;
-		/** receiver_id. */
+		/** receiver. */
 		public static final String COL_RECEIVER =
-				"receiver_id";
+				"receiver";
 		/** Alias. */
 		public static final String ALIASED_COL_RECEIVER =
 				GiveastickContract.Stick.TABLE_NAME + "." + COL_RECEIVER;
-		/** User_givenSticks_internal. */
-		public static final String COL_USERGIVENSTICKSINTERNAL =
-				"User_givenSticks_internal";
-		/** Alias. */
-		public static final String ALIASED_COL_USERGIVENSTICKSINTERNAL =
-				GiveastickContract.Stick.TABLE_NAME + "." + COL_USERGIVENSTICKSINTERNAL;
-		/** User_receivedSticks_internal. */
-		public static final String COL_USERRECEIVEDSTICKSINTERNAL =
-				"User_receivedSticks_internal";
-		/** Alias. */
-		public static final String ALIASED_COL_USERRECEIVEDSTICKSINTERNAL =
-				GiveastickContract.Stick.TABLE_NAME + "." + COL_USERRECEIVEDSTICKSINTERNAL;
 	}
 
 	/**
@@ -814,9 +802,7 @@ public abstract class GiveastickContractBase {
 			StickColumns.COL_GIVEN	,
 			StickColumns.COL_PULLEDOFF	,
 			StickColumns.COL_GIVER	,
-			StickColumns.COL_RECEIVER	,
-			StickColumns.COL_USERGIVENSTICKSINTERNAL	,
-			StickColumns.COL_USERRECEIVEDSTICKSINTERNAL
+			StickColumns.COL_RECEIVER
 		};
 
 		/** Global Fields. */
@@ -826,28 +812,9 @@ public abstract class GiveastickContractBase {
 			StickColumns.ALIASED_COL_GIVEN	,
 			StickColumns.ALIASED_COL_PULLEDOFF	,
 			StickColumns.ALIASED_COL_GIVER	,
-			StickColumns.ALIASED_COL_RECEIVER	,
-			StickColumns.ALIASED_COL_USERGIVENSTICKSINTERNAL	,
-			StickColumns.ALIASED_COL_USERRECEIVEDSTICKSINTERNAL
+			StickColumns.ALIASED_COL_RECEIVER
 		};
 
-		/** Convert Stick entity to Content Values for database.
-		 *
-		 * @param item Stick entity object
-		 * @param userId user id
-		 * @param userId user id
-		 * @return ContentValues object
-		 */
-		public static ContentValues itemToContentValues(final Stick item,
-					int userId,
-					int userId) {
-			final ContentValues result = GiveastickContract.Stick.itemToContentValues(item);
-			result.put(COL_USERGIVENSTICKSINTERNAL,
-					String.valueOf(userId));
-			result.put(COL_USERRECEIVEDSTICKSINTERNAL,
-					String.valueOf(userId));
-			return result;
-		}
 
 		/**
 		 * Converts a Stick into a content values.

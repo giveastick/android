@@ -75,7 +75,7 @@ public abstract class StickTestProviderBase extends TestDBBase {
 			Stick stick = StickUtils.generateRandom(this.ctx);
 
 			try {
-				ContentValues values = GiveastickContract.Stick.itemToContentValues(stick, 0, 0);
+				ContentValues values = GiveastickContract.Stick.itemToContentValues(stick);
 				values.remove(GiveastickContract.Stick.COL_ID);
 				result = this.provider.insert(StickProviderAdapter.STICK_URI, values);
 
@@ -135,7 +135,7 @@ public abstract class StickTestProviderBase extends TestDBBase {
 			try {
 				stick.setId(this.entity.getId());
 
-				ContentValues values = GiveastickContract.Stick.itemToContentValues(stick, 0, 0);
+				ContentValues values = GiveastickContract.Stick.itemToContentValues(stick);
 				result = this.provider.update(
 					Uri.parse(StickProviderAdapter.STICK_URI
 						+ "/"
@@ -160,7 +160,7 @@ public abstract class StickTestProviderBase extends TestDBBase {
 			Stick stick = StickUtils.generateRandom(this.ctx);
 
 			try {
-				ContentValues values = GiveastickContract.Stick.itemToContentValues(stick, 0, 0);
+				ContentValues values = GiveastickContract.Stick.itemToContentValues(stick);
 				values.remove(GiveastickContract.Stick.COL_ID);
 
 				result = this.provider.update(StickProviderAdapter.STICK_URI, values, null, null);
