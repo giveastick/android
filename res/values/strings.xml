@@ -130,4 +130,35 @@
 	<string name="votestick_user_dialog_title">Select user</string>
 	<string name="votestick_user_invalid_field_error">Field User is invalid.</string>
 	<string name="votestick_user_label">User</string>
+	
+
+    <string name="app_name">Give A Stick</string>
+    <string name="action_settings">Settings</string>
+    
+    <!-- General -->
+    <string name="connectionError">Une erreur de connexion est survenue, merci de réessayer plus tard</string>
+
+    <!-- LoginActivity -->
+    <string name="userName">Email&#8230;</string>
+    <string name="password">Mot de passe&#8230;</string>
+    <string name="passwordConfirm">Confirmation du mot de passe&#8230;</string>
+    <string name="login">Connexion</string>
+    <string name="register"><u>Inscription</u></string>
+    <string name="login_incorrect">Identifiants incorrects</string>
+
+    <!-- RegisterActivity -->
+    <string name="register_activity">Inscription</string>
+    <string name="nick">Pseudo&#8230;</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="groupTag">Group tag</string>
+    <string name="validation">Validation</string>
+
+    <!-- AboutActivity -->
+    <string name="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis venenatis odio sit amet lacinia. Pellentesque lacinia elit quam. Nullam sollicitudin ornare purus, in vehicula quam eleifend nec. Maecenas nec rhoncus augue, sit amet tristique justo. Fusce eu interdum lorem. Maecenas mattis turpis eu vehicula sodales.</string>
+    <string name="about_title">A propos</string>
+    <string name="return_home">Retour</string>
+
+    <!-- ListActivity -->
+    <string name="title_activity_list">ListActivity</string>
+	
 </resources>

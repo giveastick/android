@@ -50,12 +50,15 @@ public class User implements Serializable , Parcelable {
 	@ManyToOne
 	private UserGroup userGroup;
 	
+	@Column(nullable=true)
 	@OneToMany
 	private ArrayList<VoteStick> voteSticks;
 	
+	@Column(nullable=true)
 	@OneToMany(mappedBy = "giver")
 	private ArrayList<Stick> givenSticks;
 	
+	@Column(nullable=true)
 	@OneToMany(mappedBy = "receiver")
 	private ArrayList<Stick> receivedSticks;
 
@@ -64,6 +67,8 @@ public class User implements Serializable , Parcelable {
 	 * Default constructor.
 	 */
 	public User() {
+		if(this.created == null)
+			this.created = new DateTime();
 
 	}
 

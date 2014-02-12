@@ -125,12 +125,6 @@ public class UserGroupCreateFragment extends HarmonyFragment
 					this.tagView.getText().toString().trim())) {
 			error = R.string.usergroup_tag_invalid_field_error;
 		}
-		if (this.usersAdapter.getCheckedItems().isEmpty()) {
-			error = R.string.usergroup_users_invalid_field_error;
-		}
-		if (this.voteForfeitsAdapter.getCheckedItems().isEmpty()) {
-			error = R.string.usergroup_voteforfeits_invalid_field_error;
-		}
 	
 		if (error > 0) {
 			Toast.makeText(this.getActivity(),

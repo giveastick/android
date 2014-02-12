@@ -200,15 +200,6 @@ public class UserEditFragment extends HarmonyFragment
 		if (this.userGroupAdapter.getSelectedItem() == null) {
 			error = R.string.user_usergroup_invalid_field_error;
 		}
-		if (this.voteSticksAdapter.getCheckedItems().isEmpty()) {
-			error = R.string.user_votesticks_invalid_field_error;
-		}
-		if (this.givenSticksAdapter.getCheckedItems().isEmpty()) {
-			error = R.string.user_givensticks_invalid_field_error;
-		}
-		if (this.receivedSticksAdapter.getCheckedItems().isEmpty()) {
-			error = R.string.user_receivedsticks_invalid_field_error;
-		}
 	
 		if (error > 0) {
 			Toast.makeText(this.getActivity(),

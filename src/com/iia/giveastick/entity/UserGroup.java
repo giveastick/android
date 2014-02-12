@@ -33,9 +33,11 @@ public class UserGroup  implements Serializable , Parcelable {
 	@Column
 	private String tag;
 	
+	@Column(nullable=true)
 	@OneToMany
 	private ArrayList<User> users;
 	
+	@Column(nullable=true)
 	@OneToMany
 	private ArrayList<VoteForfeit> voteForfeits;
 
