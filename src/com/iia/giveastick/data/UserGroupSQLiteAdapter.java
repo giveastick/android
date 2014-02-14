@@ -10,8 +10,11 @@
  **************************************************************************/
 package com.iia.giveastick.data;
 
-import com.iia.giveastick.data.base.UserGroupSQLiteAdapterBase;
 import android.content.Context;
+import android.database.Cursor;
+
+import com.iia.giveastick.data.base.UserGroupSQLiteAdapterBase;
+import com.iia.giveastick.entity.UserGroup;
 
 /**
  * UserGroup adapter database class. 
@@ -27,5 +30,19 @@ public class UserGroupSQLiteAdapter extends UserGroupSQLiteAdapterBase {
 	 */
 	public UserGroupSQLiteAdapter(final Context ctx) {
 		super(ctx);
+	}
+	
+	public UserGroup getByTag(String tag){
+		UserGroup result = null;
+		
+		Cursor c = this.mDatabase.query(this.getTableName(), this.getCols(), "tag=?", new String[]{ tag }, null, null, null);
+		c.moveToFirst();
+		
+		if(c.getCount() > 0)
+		{
+			result = this.cursorToItems(c).get(0);
+		}
+		
+		return result;
 	}
 }

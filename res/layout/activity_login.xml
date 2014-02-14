@@ -11,22 +11,14 @@
 	    android:paddingRight="@dimen/activity_horizontal_margin"
 	    android:paddingTop="@dimen/activity_vertical_margin"
 	    tools:context=".HomeActivity" >
-	    
-	  <ImageView 
-	      android:id="@+id/logo"
-	      android:src="@drawable/gas_logo"
-	      android:layout_width="wrap_content"
-          android:layout_height="30dp"
-          android:adjustViewBounds="true"
-          android:scaleType="fitCenter"
-	  />
+
 	  	
 	   <EditText
 	        android:id="@+id/userName"
 	        android:inputType="textEmailAddress"
 	        android:layout_width="200dp"
 	        android:layout_height="wrap_content"
-	        android:layout_alignBottom="@id/logo"
+	        android:layout_alignParentTop="true"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="76dp"
 	        android:ems="10"

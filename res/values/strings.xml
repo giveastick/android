@@ -145,6 +145,7 @@
     <string name="login">Connexion</string>
     <string name="register"><u>Inscription</u></string>
     <string name="login_incorrect">Identifiants incorrects</string>
+    <string name="login_emtpy">Entrez un identifiant et un mot de passe</string>
 
     <!-- RegisterActivity -->
     <string name="register_activity">Inscription</string>

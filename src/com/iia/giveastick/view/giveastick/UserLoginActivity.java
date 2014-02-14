@@ -10,10 +10,12 @@
  **************************************************************************/
 package com.iia.giveastick.view.giveastick;
 
-import android.app.ListActivity;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,10 +23,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iia.giveastick.HomeActivity;
 import com.iia.giveastick.R;
 import com.iia.giveastick.entity.User;
 import com.iia.giveastick.harmony.view.HarmonyFragmentActivity;
+import com.iia.giveastick.util.GetWsJson;
+import com.iia.giveastick.util.ParserUser;
+import com.iia.giveastick.util.RestClient.Verb;
 
 /**
  * Stick create Activity.
@@ -34,14 +38,19 @@ import com.iia.giveastick.harmony.view.HarmonyFragmentActivity;
  * @see android.app.Activity
  */
 public class UserLoginActivity extends HarmonyFragmentActivity {
-
+	EditText mEmail;
+	EditText mPassword;
+	
+	private static final String TAG = "UserLoginActivity";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
-		final EditText email = (EditText) findViewById(R.id.userName);
-		final EditText mdp = (EditText) findViewById(R.id.password);
+		mEmail = (EditText) findViewById(R.id.userName);
+		mPassword = (EditText) findViewById(R.id.password);
+		
 		Button login = (Button) findViewById(R.id.login);
 		TextView register = (TextView) findViewById(R.id.register);
 
@@ -57,35 +66,63 @@ public class UserLoginActivity extends HarmonyFragmentActivity {
 		login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
-
 				UserLoginActivity.this.login();
-				
-				
-
-				
 			}
 		});
 	}
 	
 	protected void login(){
-		new InternetLogin().execute();
+		if(!this.mEmail.getText().toString().matches("") && !this.mPassword.getText().toString().matches(""))
+		{
+			new WsLogin().execute();
+		}
+		else
+		{
+			Toast.makeText(this, "@string/login_empty", Toast.LENGTH_LONG).show();
+		}
 	}
 	
-	private class InternetLogin extends AsyncTask<String, Void, Void> {
+	private class WsLogin extends AsyncTask<Void, Void, User> {
 		@Override
-		protected Void doInBackground(String... arg0) {
-			// TODO Auto-generated method stub
-			return null;
+		protected User doInBackground(Void...voids) {
+			User result = null;
+			
+			try{                                                                                                                                                   
+				JSONObject postData = new JSONObject();
+				postData.put("email", mEmail.getText().toString());
+				postData.put("password", mPassword.getText().toString());
+				JSONObject jsonResult = new GetWsJson("/login", postData, Verb.POST).getJSONObject();
+				
+				if(!GetWsJson.treatError(UserLoginActivity.this, jsonResult))
+				{
+					result = ParserUser.getUser(jsonResult, UserLoginActivity.this);
+				}
+				
+			}
+			catch(Exception e)
+			{
+				Log.e(TAG, "Error while fetching user details");
+			}
+			
+			return result;
 		}
 		
-		protected void onPostExecute(){
-			//Bundle myDatas = new Bundle();
-			//myDatas.putSerializable(Const.BUNDLE_USER, (User) myUser);
-			Intent intentConnexion = new Intent(UserLoginActivity.this,
-													StickListActivity.class);
-			startActivity(intentConnexion);
-			//intentConnexion.putExtras(myDatas);
+		protected void onPostExecute(User user){
+			if(user != null)
+			{
+				Toast.makeText(UserLoginActivity.this, "Welcome!", Toast.LENGTH_SHORT);
+				//Bundle myDatas = new Bundle();
+				//myDatas.putSerializable(Const.BUNDLE_USER, (User) user);
+				//Intent intentConnexion = new Intent(UserLoginActivity.this,
+				//		StickListActivity.class);
+				//startActivity(intentConnexion);
+				//intentConnexion.putExtras(myDatas);
+			}
+			else
+			{
+				Toast.makeText(UserLoginActivity.this, "@string/login_incorrect", Toast.LENGTH_SHORT).show();
+			}
+			
 		}
 	}
 }

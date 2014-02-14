@@ -10,32 +10,21 @@
  **************************************************************************/
 package com.iia.giveastick.view.giveastick;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.iia.giveastick.R;
+import com.iia.giveastick.entity.User;
 import com.iia.giveastick.harmony.view.HarmonyFragmentActivity;
+import com.iia.giveastick.util.GetHttp;
+import com.iia.giveastick.util.ParserUser;
 
 /**
  * Stick create Activity.
@@ -66,7 +55,7 @@ public class StickListActivity extends HarmonyFragmentActivity {
 		            String serverURL = "http://ws.giveastick.com/login";
 		             
 		            // Use AsyncTask execute Method To Prevent ANR Problem
-		            new GetJsonDataOperation().execute(serverURL);
+		            new GetJsonDataOperation().execute();
 		        }
 	        }); 
 		}
@@ -76,98 +65,23 @@ public class StickListActivity extends HarmonyFragmentActivity {
 		super.onDestroy();
 	}
 
-	private class GetJsonDataOperation extends AsyncTask<String, Void, Void> {
-		// Required initialization
-		private final HttpClient Client = new DefaultHttpClient();
-		private String Content;
-		private String Error = null;
-		private ProgressDialog Dialog = new ProgressDialog(
-				StickListActivity.this);
-		String data = "";
-		TextView uiUpdate = (TextView) findViewById(R.id.output);
-		TextView jsonParsed = (TextView) findViewById(R.id.jsonParsed);
-		int sizeData = 0;
-		EditText serverText = (EditText) findViewById(R.id.serverText);
-
+	private class GetJsonDataOperation extends AsyncTask<Void, Void, User> {
+		
 		protected void onPreExecute() {
-			// NOTE: You can call UI Element here.
-			// Start Progress Dialog (Message)
-			Dialog.setMessage("Please wait..");
-			Dialog.show();
-
-			try {
-				// Set Request parameter
-				data += "&" + URLEncoder.encode("data", "UTF-8") + "="
-						+ serverText.getText();
-
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 
 		}
 
 		// Call after onPreExecute method
-		protected Void doInBackground(String... urls) {
-			/************ Make Post Call To Web Server ***********/
-			BufferedReader reader = null;
-			// Send data
-			try {
-				// Defined URL where to send data
-				URL url = new URL(urls[0]);
-				// Send POST data request
-				URLConnection conn = url.openConnection();
-				conn.setDoOutput(true);
-				OutputStreamWriter wr = new OutputStreamWriter(
-						conn.getOutputStream());
-				wr.write(data);
-				wr.flush();
-				// Get the server response
-				reader = new BufferedReader(new InputStreamReader(
-						conn.getInputStream()));
-				StringBuilder sb = new StringBuilder();
-				String line = null;
-				// Read Server Response
-				while ((line = reader.readLine()) != null) {
-					// Append server response in string
-					sb.append(line + " ");
-				}
+		protected User doInBackground(Void... arg0) {
+			User result = null;
 
-				// Append Server Response To Content String
-				Content = sb.toString();
-			} catch (Exception ex) {
-				Error = ex.getMessage();
-			} finally {
-				try {
-					reader.close();
-				} catch (Exception ex) {
-				}
-			}
-			return null;
+			
+			return result;
 		}
 
-		protected void onPostExecute(Void unused) {
-			Dialog.dismiss();
-
-			if (Error != null) {
-				Toast.makeText(StickListActivity.this, Error.toString(), Toast.LENGTH_LONG).show();
-			} else {
-				// Show Response Json On Screen (activity)
-				uiUpdate.setText("Voley::::" + Content);
-				JSONObject jsonResponse;
-
-				try {
-					jsonResponse = new JSONObject(Content);
-					
-					JSONArray jsonMainNode = jsonResponse
-							.optJSONArray("android");
-
-					
-
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-			}
+		@Override
+		protected void onPostExecute(User result) {
+			
 		}
 	}
 }
