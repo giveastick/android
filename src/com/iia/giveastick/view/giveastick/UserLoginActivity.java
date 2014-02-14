@@ -91,12 +91,14 @@ public class UserLoginActivity extends HarmonyFragmentActivity {
 				JSONObject postData = new JSONObject();
 				postData.put("email", mEmail.getText().toString());
 				postData.put("password", mPassword.getText().toString());
-				JSONObject jsonResult = new GetWsJson("/login", postData, Verb.POST).getJSONObject();
 				
-				if(!GetWsJson.treatError(UserLoginActivity.this, jsonResult))
-				{
-					result = ParserUser.getUser(jsonResult, UserLoginActivity.this);
-				}
+				//JSONObject jsonResult = new GetWsJson("/debug", postData, Verb.POST).getJSONObject();	
+			    String jsonResult = new GetWsJson("/login", postData, Verb.POST).getString();	
+			    Log.d(TAG, jsonResult);
+				//if(!GetWsJson.treatError(UserLoginActivity.this, jsonResult))
+				//{
+				//	result = ParserUser.getUser(jsonResult, UserLoginActivity.this);
+				//}
 				
 			}
 			catch(Exception e)
