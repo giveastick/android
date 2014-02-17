@@ -49,6 +49,7 @@ public class GetWsJson {
 		try{
 			httpResult = GetHttp.getContent(this.ressource, this.postData, this.verb);
 			this.stringResult = httpResult;
+			Log.d(TAG, this.stringResult);
 		}
 		catch(Exception e)
 		{
@@ -62,6 +63,7 @@ public class GetWsJson {
 		catch(Exception e)
 		{
 			Log.e(TAG, "HTTP response seems to not be a JSON string");
+			Log.e(TAG, e.getMessage());
 		}
 		
 		/** Parse the android result **/
@@ -113,14 +115,12 @@ public class GetWsJson {
 			/** If successful, return the data **/
 			try
 			{
-				jsonData = jsonAndroid.getJSONObject("data");
+				this.jsonResult = jsonAndroid.getJSONObject("data");
 			}
 			catch(Exception e){
 				Log.e(TAG, "Error while putting data in a JSONObject result");
 			}
 		}
-		
-		jsonResult = result;
 	}
 	
 	public String getString()
@@ -147,6 +147,7 @@ public class GetWsJson {
 		{
 			result = true;
 			Log.e(TAG, "json seems to not be a json object");
+			Log.e(TAG, e.getMessage());
 		}
 		
 		return result;

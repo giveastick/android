@@ -24,7 +24,7 @@ public class ParserUser {
 		User result = null;
 		
 		try {
-			boolean error = jsonResult.getBoolean("success");
+			boolean error = !jsonResult.getBoolean("success");
 			
 			if(!error)
 			{	
@@ -33,8 +33,15 @@ public class ParserUser {
 				String userGroupTag = jsonUser.getString("group");
 				
 				UserGroupSQLiteAdapter daoUser = new UserGroupSQLiteAdapter(context);
+				
 				UserGroup userGroup = daoUser.getByTag(userGroupTag);
 				
+				if(userGroup == null)
+				{
+					userGroup = new UserGroup();
+					userGroup.setTag(userGroupTag);
+					userGroup.setUsers(value)
+				}
 				if(userGroup != null)
 				{
 					result = new User();
