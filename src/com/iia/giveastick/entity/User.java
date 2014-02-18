@@ -62,6 +62,7 @@ public class User implements Serializable , Parcelable {
 	@OneToMany(mappedBy = "receiver")
 	private ArrayList<Stick> receivedSticks;
 
+	private int nbBatons;
 
 	/**
 	 * Default constructor.
@@ -70,6 +71,12 @@ public class User implements Serializable , Parcelable {
 		if(this.created == null)
 			this.created = new DateTime();
 
+	}
+	
+	public User(String nickname, int nbBatons)
+	{
+		this.nickname = nickname;
+		this.setNbBatons(nbBatons);
 	}
 
 	/**
@@ -343,6 +350,25 @@ public class User implements Serializable , Parcelable {
 		// This should return 0 
 		// or CONTENTS_FILE_DESCRIPTOR if your entity is a FileDescriptor.
 		return 0;
+	}
+
+	public String getBatons() {
+		String result = "";
+		
+		for(int i=0; i<this.nbBatons; i++)
+		{
+			result += "|";
+		}
+		
+		return result;
+	}
+
+	public int getNbBatons() {
+		return nbBatons;
+	}
+
+	public void setNbBatons(int nbBatons) {
+		this.nbBatons = nbBatons;
 	}
 
 	/**

@@ -31,23 +31,18 @@ public class ParserUser {
 				JSONObject jsonUser = jsonResult.getJSONObject("user");
 				String userEmail = jsonUser.getString("email");
 				String userGroupTag = jsonUser.getString("group");
+				String userNickname = jsonUser.getString("nick");
 				
 				UserGroupSQLiteAdapter daoUser = new UserGroupSQLiteAdapter(context);
 				
-				UserGroup userGroup = daoUser.getByTag(userGroupTag);
-				
-				if(userGroup == null)
-				{
-					userGroup = new UserGroup();
-					userGroup.setTag(userGroupTag);
-					userGroup.setUsers(value)
-				}
-				if(userGroup != null)
-				{
-					result = new User();
-					result.setEmail(userEmail);
-					result.setUserGroup(userGroup);
-				}
+				UserGroup userGroup = new UserGroup();
+				userGroup.setId(1);
+				userGroup.setTag("IIA2013");
+		
+				result = new User();
+				result.setEmail(userEmail);
+				result.setUserGroup(userGroup);
+				result.setNickname(userNickname);
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

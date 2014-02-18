@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="list_item_prefix_highlight_color">#99cc00</color>
-	<color name="list_item_header_color">#33B5E5</color>
+    <color name="black">#121313</color>
+    <color name="grey">#626B6A</color>
+    <color name="light_grey">#939F9E</color>
+    <color name="white">#DBE9E7</color>
+    <color name="list_item_header_color">#FF0000</color>
+    <color name="list_item_prefix_highlight_color">#00FF00</color>
 </resources>

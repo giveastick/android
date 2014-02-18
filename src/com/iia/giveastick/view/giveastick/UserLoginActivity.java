@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.iia.giveastick.R;
 import com.iia.giveastick.entity.User;
 import com.iia.giveastick.harmony.view.HarmonyFragmentActivity;
+import com.iia.giveastick.util.Const;
 import com.iia.giveastick.util.GetWsJson;
 import com.iia.giveastick.util.ParserUser;
 import com.iia.giveastick.util.RestClient.Verb;
@@ -78,7 +79,7 @@ public class UserLoginActivity extends HarmonyFragmentActivity {
 		}
 		else
 		{
-			Toast.makeText(this, "@string/login_empty", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.login_empty, Toast.LENGTH_LONG).show();
 		}
 	}
 	
@@ -110,17 +111,16 @@ public class UserLoginActivity extends HarmonyFragmentActivity {
 		protected void onPostExecute(User user){
 			if(user != null)
 			{
-				Toast.makeText(UserLoginActivity.this, "Welcome!", Toast.LENGTH_SHORT);
-				//Bundle myDatas = new Bundle();
-				//myDatas.putSerializable(Const.BUNDLE_USER, (User) user);
-				//Intent intentConnexion = new Intent(UserLoginActivity.this,
-				//		StickListActivity.class);
-				//startActivity(intentConnexion);
-				//intentConnexion.putExtras(myDatas);
+				Bundle myDatas = new Bundle();
+				myDatas.putSerializable(Const.BUNDLE_USER, (User) user);
+				Intent intentConnexion = new Intent(UserLoginActivity.this,
+						StickListActivity.class);
+				intentConnexion.putExtras(myDatas);
+				startActivity(intentConnexion);
 			}
 			else
 			{
-				Toast.makeText(UserLoginActivity.this, "@string/login_incorrect", Toast.LENGTH_SHORT).show();
+				Toast.makeText(UserLoginActivity.this, R.string.false_login, Toast.LENGTH_SHORT).show();
 			}
 			
 		}

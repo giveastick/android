@@ -22,7 +22,6 @@ import com.iia.giveastick.data.base.UserGroupSQLiteAdapterBase;
 import com.iia.giveastick.entity.User;
 import com.iia.giveastick.entity.UserGroup;
 import com.iia.giveastick.util.GetWsJson;
-import com.iia.giveastick.util.ParserGroup;
 import com.iia.giveastick.util.ParserUser;
 import com.iia.giveastick.util.RestClient.Verb;
 import com.iia.giveastick.view.giveastick.UserLoginActivity;
@@ -64,35 +63,11 @@ public class UserGroupSQLiteAdapter extends UserGroupSQLiteAdapterBase {
  		
  		if(result == null)
  		{
- 			
- 			UserGroup newUserGroup  = new WsGroup().execute(new String[]{tag});
+ 			result.setId(1);
+ 			result.setTag(tag);
  		}
 
 		return result;
-	}
-	
-	private class WsGroup extends AsyncTask<String, Void, UserGroup> {
-		@Override
-		protected UserGroup doInBackground(String...strings) {
-			UserGroup result = null;
-			
-			try{                                                                                                                                                   
-				JSONObject postData = new JSONObject();
-				
-				JSONObject jsonResult = new GetWsJson("/group/" + strings[0], postData, Verb.GET).getJSONObject();	
-				if(!GetWsJson.treatError(UserGroupSQLiteAdapter.this.ctx, jsonResult))
-				{
-					result = ParserGroup.getGroup(jsonResult, UserGroupSQLiteAdapter.this.ctx);
-				}
-				
-			}
-			catch(Exception e)
-			{
-				Log.e(TAG, "Error while fetching group details");
-			}
-			
-			return result;
-		}
 	}
 }
 

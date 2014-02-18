@@ -22,7 +22,6 @@
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="76dp"
 	        android:ems="10"
-	        android:text="demo@giveastick.com"
 	        android:hint="@string/userName" />
 	
 	    <EditText
@@ -34,7 +33,6 @@
 	        android:layout_marginTop="30dp"
 	        android:ems="10"
 	        android:inputType="textPassword"
-	        android:text="good"
 	        android:hint="@string/password" />
 	
 	    <Button

@@ -1,260 +1,316 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.iia.giveastick"
-	android:versionCode="1"
-	android:versionName="@string/app_version">
-	<uses-sdk
-		android:minSdkVersion="7"
-		android:targetSdkVersion="18" />
-	<uses-permission android:name="android.permission.GET_TASKS" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    package="com.iia.giveastick"
+    android:versionCode="1"
+    android:versionName="@string/app_version" >
 
-	<application
-		android:label="@string/app_name"
-		android:name=".GiveastickApplication"
-		android:icon="@drawable/ic_launcher"
-		android:allowBackup="true"
-		android:theme="@style/PinnedTheme">
-		
-	    <activity
-			android:name="com.iia.giveastick.view.giveastick.UserLoginActivity"
-			android:label="@string/app_name"
-			android:configChanges="orientation"
-    		android:screenOrientation="portrait" android:launchMode="singleTask">
-			<intent-filter>
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="com.iia.giveastick.GiveastickApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/PinnedTheme" >
+        <activity
+            android:name="com.iia.giveastick.view.giveastick.UserLoginActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.giveastick.UserRegisterActivity"
+            android:configChanges="orientation"
+            android:label="@string/register_activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.giveastick.StickListActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+
+            <!--
+            <intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-		</activity>
-		
-	    <activity
-			android:name="com.iia.giveastick.view.giveastick.UserRegisterActivity"
-			android:label="@string/register_activity"
-			android:configChanges="orientation"
-    		android:screenOrientation="portrait"
-    		android:windowSoftInputMode="adjustResize" android:launchMode="singleTask">
-		</activity>
-		
-	    <activity
-			android:name="com.iia.giveastick.view.giveastick.StickListActivity"
-			android:label="@string/app_name"
-			android:configChanges="orientation"
-    		android:screenOrientation="portrait" android:launchMode="singleTask">
-			<!-- <intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>-->
-		</activity>
-	    
-		<activity
-			android:name=".HomeActivity"
-			android:label="@string/app_name">
-		</activity>
-		<activity
-			android:name=".view.user.UserCreateActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.INSERT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.User" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.user.UserEditActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.User" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.user.UserShowActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.User" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.user.UserListActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.User" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.votestick.VoteStickCreateActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.INSERT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteStick" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.votestick.VoteStickEditActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteStick" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.votestick.VoteStickShowActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteStick" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.votestick.VoteStickListActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.VoteStick" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.stick.StickCreateActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.INSERT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.Stick" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.stick.StickEditActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.Stick" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.stick.StickShowActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.Stick" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.stick.StickListActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.Stick" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.usergroup.UserGroupCreateActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.INSERT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.UserGroup" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.usergroup.UserGroupEditActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.UserGroup" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.usergroup.UserGroupShowActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.UserGroup" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.usergroup.UserGroupListActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.UserGroup" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.voteforfeit.VoteForfeitCreateActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.INSERT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteForfeit" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.voteforfeit.VoteForfeitEditActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteForfeit" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.voteforfeit.VoteForfeitShowActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteForfeit" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".view.voteforfeit.VoteForfeitListActivity"
-			android:label="@string/app_name"
-			android:exported="false">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.VoteForfeit" />
-			</intent-filter>
-		</activity>
-		<provider
-			android:name="com.iia.giveastick.provider.GiveastickProvider"
-			android:authorities="com.iia.giveastick.provider"
-			android:label="@string/app_provider_name"
-			android:description="@string/app_provider_description" />
-	</application>
+            -->
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.HomeActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.user.UserCreateActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.User" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.user.UserEditActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.User" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.user.UserShowActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.User" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.user.UserListActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.User" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.votestick.VoteStickCreateActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteStick" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.votestick.VoteStickEditActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteStick" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.votestick.VoteStickShowActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteStick" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.votestick.VoteStickListActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.VoteStick" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.stick.StickCreateActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.Stick" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.stick.StickEditActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.Stick" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.stick.StickShowActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.Stick" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.stick.StickListActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.Stick" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.usergroup.UserGroupCreateActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.UserGroup" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.usergroup.UserGroupEditActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.UserGroup" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.usergroup.UserGroupShowActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.UserGroup" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.usergroup.UserGroupListActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.UserGroup" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.voteforfeit.VoteForfeitCreateActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteForfeit" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.voteforfeit.VoteForfeitEditActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteForfeit" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.voteforfeit.VoteForfeitShowActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/com.iia.giveastick.VoteForfeit" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.view.voteforfeit.VoteForfeitListActivity"
+            android:exported="false"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.collection/com.iia.giveastick.VoteForfeit" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.iia.giveastick.provider.GiveastickProvider"
+            android:authorities="com.iia.giveastick.provider"
+            android:description="@string/app_provider_description"
+            android:label="@string/app_provider_name" />
+
+        <activity
+            android:name="com.iia.giveastick.view.giveastick.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName="com.iia.giveastick.view.giveastick.StickListActivity" >
+        </activity>
+        <activity
+            android:name="com.iia.giveastick.SplashActivity"
+            android:label="@string/title_activity_splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
 </manifest>
