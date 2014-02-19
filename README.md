@@ -21,5 +21,5 @@ https://github.com/giveastick/docs
 Developed By
 ------------
 
-Alexandre THIBOULT
+Alexandre THIBOULT and 
 Maxime LEBASTARD
