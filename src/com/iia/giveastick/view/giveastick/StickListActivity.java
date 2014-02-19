@@ -39,16 +39,16 @@ import com.iia.giveastick.util.AccelerometerManager;
 import com.iia.giveastick.util.Const;
 
 /**
- * Stick create Activity.
- * 
- * This only contains a StickCreateFragment.
+ * List of the sticks activity
+ * Includes a menu inflater and a Listener on the shake
  * 
  * @see android.app.Activity
  */
 public class StickListActivity extends HarmonyFragmentActivity implements AccelerometerListener {
 	private final static String TAG = "StickListActivity";
 	
-	// Android activity events
+	// Android Methods
+	//////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -76,6 +76,8 @@ public class StickListActivity extends HarmonyFragmentActivity implements Accele
 		// Create Data
 		final ArrayList<User> aUsers = new ArrayList<User>();
 		
+		// For demo reasons, we don't get the data from the Webservice
+		// TODO: Get data from the webservice
 		User monUser = (User) new User("alex", 3);
 		User monUser2 = (User) new User("steve", 2);
 		User monUser3 = (User) new User("boby", 4);
@@ -148,6 +150,7 @@ public class StickListActivity extends HarmonyFragmentActivity implements Accele
 	}
 	
 	// ListAdapter
+	////////////////////////
 	private static class myAdapter extends ArrayAdapter<User> {
 
 		private Context context;
@@ -182,6 +185,7 @@ public class StickListActivity extends HarmonyFragmentActivity implements Accele
 	}
 	
 	// Options of the Action Bar
+	///////////////////////////////
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.stick_list_activity_actions, menu);
@@ -209,11 +213,19 @@ public class StickListActivity extends HarmonyFragmentActivity implements Accele
 		return result;
 	}
 	
+	/**
+	 * On touching the "A propos" item in the menu
+	 * @author Alexandre Thiboult
+	 */
 	private void about(){
 		Intent intentAbout = new Intent(StickListActivity.this, AboutActivity.class);
 		startActivity(intentAbout);
 	}
 	
+	/**
+	 * On touching the "Deconnexion" item in the menu
+	 * @author Alexandre Thiboult
+	 */
 	private void logout(){
 		Intent intentLogout = new Intent(StickListActivity.this, UserLoginActivity.class);
 		startActivity(intentLogout);
@@ -221,13 +233,23 @@ public class StickListActivity extends HarmonyFragmentActivity implements Accele
 	
 	
 	// Accelerometer Handler
+	////////////////////////
+	/**
+	 * Detects if the phone is moving by the accelerometer
+	 */
 	public void onAccelerationChanged(float x, float y, float z) {
 		// As useful as Paris Hilton
 	}
 
+	/**
+	 * Triggers when the phone is shaked
+	 * 
+	 * @author Alexandre Thiboult
+	 */
 	public void onShake(float force) {
 		AlertDialog.Builder adb = new AlertDialog.Builder(StickListActivity.this);
-		adb.setTitle("Votre Gage !");
+		adb.setTitle(R.string.your_pledge);
+		// For demo reasons
 		adb.setMessage("Vous devez dire ces 3 mots dans l'heure : \r \n" + "SMURF" + "\t" + "VACHE" + "\t" + "PRISE");
 		adb.setPositiveButton("RETOUR", null);
 		adb.show();

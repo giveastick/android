@@ -21,14 +21,28 @@ import com.iia.giveastick.util.RestClient.Verb;
 import android.util.Log;
 
 /**
- * @author maxime
+ * Makes an Http request from the webservice
+ * 
+ * @author Maxime Lebastard
  * 
  */
 public class GetHttp {
 	
 	private static final String TAG = "GetHttp";
+	
+	/**
+	 * The Webservice URL
+	 */
 	private static final String WS_URL = "ws.giveastick.com";
 
+	/**
+	 * Gets the contents of a ressource from the webservice
+	 * 
+	 * @param ressource		Webservice ressource
+	 * @param jsonParams	Post parameters in a json object
+	 * @param method		Verb of the method (POST, GET, PUT or DELETE)
+	 * @return String		The WS reply
+	 */
 	public static String getContent(String ressource, JSONObject jsonParams, Verb method) {
 		String result = null;
 		

@@ -12,20 +12,44 @@ import android.widget.Toast;
 import com.iia.giveastick.util.RestClient.Verb;
 
 /**
- * @author maxime
+ * Calls the webservice, treats the errors and returns a JSON object from the WS
+ * 
+ * @author Maxime Lebastard
  *
  */
 public class GetWsJson {
 	private static final String TAG = "GetWsJson";
 	
+	/**
+	 * The ressource url of the ws
+	 */
 	protected String ressource = "";
+	/**
+	 * Post data to send, encapsuled in a JSON Object
+	 */
 	protected JSONObject postData = null;
+	/**
+	 * Verb of the request (POST, GET, DELETE or PUT)
+	 */
 	protected Verb verb;
 	
+	/**
+	 * The result, in JSONObject format
+	 */
 	protected JSONObject jsonResult;
+	
+	/**
+	 * The result, in string format
+	 */
 	protected String stringResult;
 	
-	
+	/**
+	 * Constructor, builds the object
+	 * 
+	 * @param ressource		The URL ressource on the WS
+	 * @param postData		Post data to send, in a JSON Object
+	 * @param verb			Verb of the call
+	 */
 	public GetWsJson(String ressource, JSONObject postData, Verb verb){
 		this.ressource = ressource;
 		this.postData = postData;
@@ -34,6 +58,11 @@ public class GetWsJson {
 		this.request();
 	}
 	
+	/**
+	 * Makes the request with a GetHttp object
+	 * 
+	 * @author Maxime Lebastard
+	 */
 	protected void request()
 	{
 		JSONObject result = null;
@@ -123,16 +152,31 @@ public class GetWsJson {
 		}
 	}
 	
+	/**
+	 * stringResult getter
+	 * @return	String stringResult
+	 */
 	public String getString()
 	{
 		return stringResult;
 	}
+	
+	/**
+	 * jsonResult getter
+	 * @return	String jsonResult
+	 */
 	
 	public JSONObject getJSONObject()
 	{
 		return jsonResult;
 	}
 	
+	/**
+	 * Analyses the returned JSONObject and treats the errors
+	 * @param context	The Context object
+	 * @param json		The JSONObject returned by GetWsJson
+	 * @return
+	 */
 	public static boolean treatError(Context context, JSONObject json)
 	{
 		boolean result = false;

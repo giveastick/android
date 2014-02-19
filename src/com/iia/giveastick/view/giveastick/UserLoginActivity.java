@@ -44,6 +44,8 @@ public class UserLoginActivity extends HarmonyFragmentActivity {
 	
 	private static final String TAG = "UserLoginActivity";
 	
+	// Android methods
+	////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,6 +74,13 @@ public class UserLoginActivity extends HarmonyFragmentActivity {
 		});
 	}
 	
+	// Activity methods
+	////////////////////////////
+	/**
+	 * Tries to login from the Webservice
+	 *
+	 * @author Maxime Lebastard
+	 */
 	protected void login(){
 		if(!this.mEmail.getText().toString().matches("") && !this.mPassword.getText().toString().matches(""))
 		{
@@ -83,7 +92,18 @@ public class UserLoginActivity extends HarmonyFragmentActivity {
 		}
 	}
 	
+	// Async Task
+	////////////////////////////
+	/**
+	 * Calls the webservice to login
+	 * 
+	 * @author Maxime Lebastard
+	 *
+	 */
 	private class WsLogin extends AsyncTask<Void, Void, User> {
+		/**
+		 * Makes a webservice call in background
+		 */
 		@Override
 		protected User doInBackground(Void...voids) {
 			User result = null;
@@ -108,6 +128,9 @@ public class UserLoginActivity extends HarmonyFragmentActivity {
 			return result;
 		}
 		
+		/**
+		 * Treats the return of the webservice
+		 */
 		protected void onPostExecute(User user){
 			if(user != null)
 			{

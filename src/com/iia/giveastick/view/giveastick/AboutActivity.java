@@ -9,6 +9,12 @@ import com.actionbarsherlock.view.MenuItem;
 import com.iia.giveastick.R;
 import com.iia.giveastick.harmony.view.HarmonyFragmentActivity;
 
+/**
+ * The about activity
+ * 
+ * @author Maxime Lebastard
+ *
+ */
 public class AboutActivity extends HarmonyFragmentActivity {
 
 	@Override

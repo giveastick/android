@@ -133,6 +133,9 @@
     <string name="votestick_user_label">User</string>
     <string name="app_name">Give A Stick</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
     <!-- General -->
     <string name="connectionError">Une erreur de connexion est survenue, merci de réessayer plus tard</string>
@@ -162,9 +165,7 @@
     <string name="title_activity_list">ListActivity</string>
     <string name="action_logout">Déconnexion</string>
     <string name="action_about">À propos</string>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_splash">SplashActivity</string>
     <string name="sticklist_give_vote_dialog_click_ok">Ton vote à bien été envoyé !</string>
+    <string name="your_pledge">Ton gage !</string>
 
 </resources>
